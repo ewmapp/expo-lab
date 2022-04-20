@@ -1,9 +1,9 @@
 import { styled } from '../../stitches.config'
 import { LogoSvg } from '../components/LogoSvg'
-import Image from 'next/image'
 import ParticleField from 'react-particles-webgl'
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
 import { Box, Text } from '../../packages/react'
+import { ImageBox } from '../components/ImageBox'
 
 const Texto = styled('p', {
   fontFamily: '$system',
@@ -144,10 +144,6 @@ const config = {
   limitConnections: true
 }
 
-const myLoader = ({ src, width, quality }) => {
-  return `assets/img/${src}?w=${width}&q=${quality || 75}`
-}
-
 export default function Home() {
   return (
     <Box>
@@ -221,12 +217,11 @@ export default function Home() {
           </DivCenter>
         </Content>
         <DivFooter>
-          <Image
-            loader={myLoader}
-            src="img-footer.png"
-            alt="Org"
-            width={562}
-            height={58}
+          <ImageBox
+            src="/assets/img/img-footer.png"
+            width="568"
+            height="58"
+            alt="ok"
           />
         </DivFooter>
       </Main>
