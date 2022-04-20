@@ -13,17 +13,17 @@ export const Link = css({
   lineHeight: 'inherit',
   '@hover': {
     '&:hover': {
-      textDecorationLine: 'underline',
-    },
+      textDecorationLine: 'underline'
+    }
   },
   '&:focus': {
     outlineWidth: '2px',
     outlineStyle: 'solid',
     outlineOffset: '2px',
-    textDecorationLine: 'none',
+    textDecorationLine: 'none'
   },
   [`& ${Text}`]: {
-    color: 'inherit',
+    color: 'inherit'
   },
   variants: {
     variant: {
@@ -31,15 +31,15 @@ export const Link = css({
         color: '$blue11',
         textDecorationColor: '$blue4',
         '&:focus': {
-          outlineColor: '$blue8',
-        },
+          outlineColor: '$blue8'
+        }
       },
       subtle: {
         color: '$slate11',
         textDecorationColor: '$slate4',
         '&:focus': {
-          outlineColor: '$slate8',
-        },
+          outlineColor: '$slate8'
+        }
       },
       contrast: {
         color: '$hiContrast',
@@ -47,16 +47,16 @@ export const Link = css({
         textDecorationColor: '$slate4',
         '@hover': {
           '&:hover': {
-            textDecorationColor: '$slate7',
-          },
+            textDecorationColor: '$slate7'
+          }
         },
         '&:focus': {
-          outlineColor: '$slate8',
-        },
-      },
-    },
+          outlineColor: '$slate8'
+        }
+      }
+    }
   },
   defaultVariants: {
-    variant: 'contrast',
-  },
+    variant: 'contrast'
+  }
 })

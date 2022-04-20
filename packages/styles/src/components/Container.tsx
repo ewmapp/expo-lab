@@ -13,26 +13,26 @@ export const Container = css('div', {
   variants: {
     size: {
       1: {
-        maxWidth: '576px',
+        maxWidth: '576px'
       },
       2: {
-        maxWidth: '768px',
+        maxWidth: '768px'
       },
       3: {
-        maxWidth: '992px',
+        maxWidth: '992px'
       },
       4: {
-        maxWidth: '1200px',
+        maxWidth: '1200px'
       },
       5: {
-        maxWidth: '1400px',
+        maxWidth: '1400px'
       },
       6: {
-        maxWidth: 'none',
-      },
-    },
+        maxWidth: 'none'
+      }
+    }
   },
   defaultVariants: {
-    size: '5',
-  },
+    size: '5'
+  }
 })

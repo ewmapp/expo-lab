@@ -2,7 +2,7 @@ import { css, keyframes } from '../../../web/src'
 
 const spin = keyframes({
   '0%': { transform: 'rotate(0deg)' },
-  '100%': { transform: 'rotate(360deg)' },
+  '100%': { transform: 'rotate(360deg)' }
 })
 
 export const Spinner = css({
@@ -23,7 +23,7 @@ export const Spinner = css({
     left: '0px',
     width: '100%',
     height: '100%',
-    borderRightColor: 'transparent',
+    borderRightColor: 'transparent'
   },
 
   '&::after': {
@@ -32,6 +32,6 @@ export const Spinner = css({
     borderBottomColor: 'transparent',
     borderLeftColor: 'transparent',
     borderRightColor: '$colors$slate2',
-    opacity: '$medium',
-  },
+    opacity: '$medium'
+  }
 })

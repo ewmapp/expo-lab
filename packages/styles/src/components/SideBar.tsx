@@ -3,15 +3,15 @@ import { css } from '../../../web/src'
 export const SideBarMenu = css({
   width: '100%',
   marginTop: 80,
-  transition: '0.3s',
+  transition: '0.3s'
 })
 export const SideBarSubMenu = css({
-  background: 'rgba(255, 255, 255, 0.1)',
+  background: 'rgba(255, 255, 255, 0.1)'
 })
 
 export const SideBarItem = css({
   position: 'relative',
-  cursor: 'pointer',
+  cursor: 'pointer'
 })
 
 export const SideBar = css({
@@ -29,8 +29,8 @@ export const SideBar = css({
   variants: {
     show: {
       true: {
-        left: 0,
-      },
-    },
-  },
+        left: 0
+      }
+    }
+  }
 })

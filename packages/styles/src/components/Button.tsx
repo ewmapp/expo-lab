@@ -6,8 +6,8 @@ export const ButtonLabel = css({
   justifyContent: 'center',
 
   '& > * + *': {
-    marginLeft: '$3',
-  },
+    marginLeft: '$3'
+  }
 })
 
 ButtonLabel.toString = () => `.${ButtonLabel.className}`
@@ -20,7 +20,7 @@ export const ButtonLoading = css({
   left: '0px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'center'
 })
 
 export const Button = css({
@@ -44,91 +44,91 @@ export const Button = css({
         backgroundColor: '$loSoPrimary',
         color: '#fff',
         '&:hover': {
-          backgroundColor: '$hiSoPrimary',
-        },
+          backgroundColor: '$hiSoPrimary'
+        }
       },
       soft: {
         backgroundColor: '$loBgPrimary',
         color: '$loPrimary',
         '&:hover': {
-          backgroundColor: '$hiBgPrimary',
-        },
+          backgroundColor: '$hiBgPrimary'
+        }
       },
       ghost: {
         backgroundColor: 'transpatent',
         color: '$loPrimary',
         '&:hover': {
-          backgroundColor: '$hiBgPrimary',
-        },
+          backgroundColor: '$hiBgPrimary'
+        }
       },
       link: {
         backgroundColor: 'transpatent',
         color: '$loPrimary',
         '&:hover': {
           color: '$loPrimary',
-          backgroundColor: 'transpatent',
-        },
+          backgroundColor: 'transpatent'
+        }
       },
       light: {
         backgroundColor: '$slate6',
         color: '$slate11',
         '&:hover': {
-          backgroundColor: '$slate7',
-        },
+          backgroundColor: '$slate7'
+        }
       },
       dark: {
         backgroundColor: '$loBgSecondary',
         color: '$loSecondary',
         '&:hover': {
-          backgroundColor: '$hiBgSecondary',
-        },
+          backgroundColor: '$hiBgSecondary'
+        }
       },
       success: {
         backgroundColor: '$green6',
         color: '$green11',
         '&:hover': {
-          backgroundColor: '$green7',
-        },
+          backgroundColor: '$green7'
+        }
       },
       danger: {
         backgroundColor: '$red6',
         color: '$red11',
         '&:hover': {
-          backgroundColor: '$red7',
-        },
-      },
+          backgroundColor: '$red7'
+        }
+      }
     },
     size: {
       sm: {
         height: '$8',
         padding: '0 $4',
-        fontsize: '$xs',
+        fontsize: '$xs'
       },
       md: {
         height: '$10',
-        padding: '0 $6',
+        padding: '0 $6'
       },
       lg: {
         height: '$12',
-        padding: '0 $8',
-      },
+        padding: '0 $8'
+      }
     },
     disabled: {
       true: {
         cursor: 'not-allowed',
-        opacity: '$medium',
-      },
+        opacity: '$medium'
+      }
     },
     outlined: {
-      true: {},
+      true: {}
     },
     loading: {
       true: {
         [`& ${ButtonLabel}`]: {
-          visibility: 'hidden',
-        },
-      },
-    },
+          visibility: 'hidden'
+        }
+      }
+    }
   },
 
   compoundVariants: [
@@ -142,9 +142,9 @@ export const Button = css({
         '&:hover': {
           color: '$loPrimary',
           background: '$loBgPrimary',
-          borderColor: '$hiBdPrimary',
-        },
-      },
+          borderColor: '$hiBdPrimary'
+        }
+      }
     },
     {
       variant: 'soft',
@@ -154,9 +154,9 @@ export const Button = css({
         borderColor: '$loBdPrimary',
         '&:hover': {
           background: 'none',
-          borderColor: '$hiBdPrimary',
-        },
-      },
+          borderColor: '$hiBdPrimary'
+        }
+      }
     },
     {
       variant: 'ghost',
@@ -166,9 +166,9 @@ export const Button = css({
         borderColor: 'none',
         '&:hover': {
           background: 'none',
-          borderColor: '$hiBdPrimary',
-        },
-      },
+          borderColor: '$hiBdPrimary'
+        }
+      }
     },
     {
       variant: 'solid',
@@ -178,9 +178,9 @@ export const Button = css({
         background: 'none',
         borderColor: '$loBdPrimary',
         '&:hover': {
-          background: '$loBgPrimary',
-        },
-      },
+          background: '$loBgPrimary'
+        }
+      }
     },
     {
       variant: 'soft',
@@ -191,9 +191,9 @@ export const Button = css({
         borderColor: '$loBdPrimary',
         '&:hover': {
           background: 'none',
-          borderColor: '$hiBdPrimary',
-        },
-      },
+          borderColor: '$hiBdPrimary'
+        }
+      }
     },
     {
       variant: 'light',
@@ -203,9 +203,9 @@ export const Button = css({
         borderColor: '$slate8',
         '&:hover': {
           background: '$slate2',
-          borderColor: '$slate8',
-        },
-      },
+          borderColor: '$slate8'
+        }
+      }
     },
     {
       variant: 'success',
@@ -215,9 +215,9 @@ export const Button = css({
         borderColor: '$green8',
         '&:hover': {
           background: '$green2',
-          borderColor: '$green8',
-        },
-      },
+          borderColor: '$green8'
+        }
+      }
     },
     {
       variant: 'danger',
@@ -227,14 +227,14 @@ export const Button = css({
         borderColor: '$red6',
         '&:hover': {
           background: '$red2',
-          borderColor: '$red8',
-        },
-      },
-    },
+          borderColor: '$red8'
+        }
+      }
+    }
   ],
 
   defaultVariants: {
     variant: 'solid',
-    size: 'md',
-  },
+    size: 'md'
+  }
 })
