@@ -4,6 +4,7 @@ import ParticleField from 'react-particles-webgl'
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
 import { Box, Text } from '../../packages/react'
 import { ImageBox } from '../components/ImageBox'
+import Script from 'next/script'
 
 const Texto = styled('p', {
   fontFamily: '$system',
@@ -90,10 +91,13 @@ const DivLogo = styled('div', {
 
 const DivFooter = styled('div', {
   position: 'fixed',
-  left: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  alignSelf: 'center',
+  left: 'auto',
   bottom: '2vw',
   width: '100%',
-  textAlign: 'center',
+  maxWidth: '568px',
   padding: '32px'
 })
 
@@ -147,6 +151,19 @@ const config = {
 export default function Home() {
   return (
     <Box>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-2J3EJ7KGZ9"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2J3EJ7KGZ9');
+        `}
+      </Script>
       <TitleAndMetaTags title="EXPOLAB | 1&#170; Mostra Nacional de Experiências da Rede de Laboratórios de Saúde Pública" />
       <Main>
         <div
@@ -218,8 +235,8 @@ export default function Home() {
         <DivFooter>
           <ImageBox
             src="/assets/img/img-footer.png"
-            width="568"
-            height="58"
+            width="100%"
+            height="auto"
             alt="org"
           />
         </DivFooter>
