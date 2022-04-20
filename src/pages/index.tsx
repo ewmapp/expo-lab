@@ -212,7 +212,6 @@ export default function Home() {
                 1&#170; Mostra Nacional de Experiências da Rede de Laboratórios
                 de Saúde Pública
               </Texto>
-              <Text>Ola</Text>
             </DivLogo>
           </DivCenter>
         </Content>
@@ -221,7 +220,7 @@ export default function Home() {
             src="/assets/img/img-footer.png"
             width="568"
             height="58"
-            alt="ok"
+            alt="org"
           />
         </DivFooter>
       </Main>
