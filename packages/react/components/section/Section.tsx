@@ -1,6 +1,6 @@
 import { Section as SectionCSS } from '../../../styles/index'
 import { styled } from '../../../web/src'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 const StyleSection = styled('section', SectionCSS)
 

@@ -1,6 +1,6 @@
 import { Link as LinkCSS } from '../../../styles/index'
 import { styled, CSS } from '../../../web/src'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 const StyleLink = styled('a', LinkCSS)
 

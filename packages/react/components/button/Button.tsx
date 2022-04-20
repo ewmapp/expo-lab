@@ -1,10 +1,10 @@
 import {
   Button as ButtonCSS,
   ButtonLabel as ButtonLabelCSS,
-  ButtonLoading as ButtonLoadingCSS,
+  ButtonLoading as ButtonLoadingCSS
 } from '../../../styles'
 import { styled } from '../../../web/src'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Spinner } from '../spinner/Spinner'
 
 const StyledButton = styled('button', ButtonCSS)

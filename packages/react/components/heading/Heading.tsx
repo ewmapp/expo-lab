@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define
 import React from 'react'
 import { Text } from '../text/Text'
 import { VariantProps, CSS } from '../../../web/src'
@@ -23,7 +24,7 @@ type HeadingVariants = {
   gradient?: true
 } & Omit<VariantProps<typeof Text>, 'size'>
 type HeadingProps = React.ComponentProps<typeof DEFAULT_TAG> &
-  HeadingVariants & { css?: CSS; as?: any }
+  HeadingVariants & { css?: CSS; as?: never }
 
 export const Heading = React.forwardRef<
   React.ElementRef<typeof DEFAULT_TAG>,
@@ -36,7 +37,7 @@ export const Heading = React.forwardRef<
     1: { '@initial': 'lg', '@bp2': 'xl' },
     2: { '@initial': '2xl', '@bp2': '4xl' },
     3: { '@initial': '5xl', '@bp2': '6xl' },
-    4: { '@initial': '7xl', '@bp2': '8xl' },
+    4: { '@initial': '7xl', '@bp2': '8xl' }
   }
 
   // This is the mapping of Heading Variants to Text css
@@ -45,26 +46,26 @@ export const Heading = React.forwardRef<
       fontWeight: 500,
       lineHeight: '$shorter',
       py: '$1',
-      '@bp2': { lineHeight: '$shorter', py: '$2' },
+      '@bp2': { lineHeight: '$shorter', py: '$2' }
     },
     2: {
       fontWeight: 500,
       lineHeight: '$shorter',
       py: '$1',
-      '@bp2': { lineHeight: '$shorter', py: '$2' },
+      '@bp2': { lineHeight: '$shorter', py: '$2' }
     },
     3: {
       fontWeight: 500,
       lineHeight: '$shorter',
       py: '$2',
-      '@bp2': { lineHeight: '$shorter', py: '$3' },
+      '@bp2': { lineHeight: '$shorter', py: '$3' }
     },
     4: {
       fontWeight: 500,
       lineHeight: '$shorter',
       py: '$2',
-      '@bp2': { lineHeight: '$shorter', py: '$3' },
-    },
+      '@bp2': { lineHeight: '$shorter', py: '$3' }
+    }
   }
 
   return (
@@ -75,7 +76,7 @@ export const Heading = React.forwardRef<
       size={textSize[size]}
       css={{
         fontVariantNumeric: 'proportional-nums',
-        ...merge(textCss[size], props.css),
+        ...merge(textCss[size], props.css)
       }}
     />
   )

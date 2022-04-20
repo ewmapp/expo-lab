@@ -1,6 +1,6 @@
 import { Flex as FlexCSS } from '../../../styles/index'
 import { styled, CSS } from '../../../web/src'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 const StyleFlex = styled('div', FlexCSS)
 

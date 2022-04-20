@@ -1,6 +1,6 @@
 import { IconButton as IconButtonCSS } from '../../../styles'
 import { styled } from '../../../web/src'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 const StyledIconButton = styled('button', IconButtonCSS)
 

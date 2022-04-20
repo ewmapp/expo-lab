@@ -3,7 +3,7 @@ import { LogoSvg } from '../components/LogoSvg'
 import Image from 'next/image'
 import ParticleField from 'react-particles-webgl'
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
-import { Box } from '../../packages/react'
+import { Box, Text } from '../../packages/react'
 
 const Texto = styled('p', {
   fontFamily: '$system',
@@ -216,6 +216,7 @@ export default function Home() {
                 1&#170; Mostra Nacional de Experiências da Rede de Laboratórios
                 de Saúde Pública
               </Texto>
+              <Text>Ola</Text>
             </DivLogo>
           </DivCenter>
         </Content>
