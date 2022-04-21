@@ -77,7 +77,7 @@ const DivCenter = styled('div', {
   webkitBoxAlign: 'center',
   alignItems: 'center',
   width: '100%',
-  padding: '28px 0px 50px'
+  padding: '10px 0px 10px'
 })
 
 const DivLogo = styled('div', {
@@ -90,15 +90,10 @@ const DivLogo = styled('div', {
 })
 
 const DivFooter = styled('div', {
-  position: 'fixed',
-  display: 'flex',
-  flexDirection: 'column',
-  alignSelf: 'center',
-  left: 'auto',
-  bottom: '2vw',
   width: '100%',
   maxWidth: '568px',
-  padding: '32px'
+  textAlign: 'center',
+  margin: '0px auto 20px auto'
 })
 
 const config = {
@@ -231,15 +226,15 @@ export default function Home() {
               </Texto>
             </DivLogo>
           </DivCenter>
+          <DivFooter>
+            <ImageBox
+              src="/assets/img/img-footer.png"
+              width="100%"
+              height="auto"
+              alt="org"
+            />
+          </DivFooter>
         </Content>
-        <DivFooter>
-          <ImageBox
-            src="/assets/img/img-footer.png"
-            width="100%"
-            height="auto"
-            alt="org"
-          />
-        </DivFooter>
       </Main>
     </Box>
   )
