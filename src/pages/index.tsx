@@ -14,7 +14,9 @@ import { LogoSvg } from '../components/LogoSvg'
 
 import Particles from '../components/Particles'
 
-const LocaleToggle = dynamic(() => import('../components/LocaleToggle'))
+const LocaleToggle = dynamic(() => import('../components/LocaleToggle'), {
+  ssr: false
+})
 
 const buttonClass = css({
   width: '120px',
