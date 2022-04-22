@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
+import Script from 'next/script'
 
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
 import { styled, css } from '../../packages/web/src'
@@ -125,6 +126,19 @@ export default function Home() {
   const { t } = useTranslation('home')
   return (
     <Box>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-2J3EJ7KGZ9"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2J3EJ7KGZ9');
+        `}
+      </Script>
       <TitleAndMetaTags title={t('title')} />
       <Particles />
       <Main>
