@@ -46,7 +46,7 @@ const TopContent = styled('div', {
   justifyContent: 'center',
   webkitBoxAlign: 'center',
   width: '100%',
-  padding: '1rem 0 1rem',
+  padding: '0rem 0 1rem',
 
   '& svg': {
     width: 'auto',
@@ -117,7 +117,7 @@ const ChatWrapper = styled('div', {
   width: '100%',
   gridColumn: 'span 2',
   gridRow: 'span 2',
-  height: '400px',
+  height: '380px',
 
   '@bp3': {
     gridColumn: 'span 1',
