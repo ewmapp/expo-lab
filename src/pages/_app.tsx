@@ -3,6 +3,11 @@ import { ThemeProvider } from 'next-themes'
 import { darkTheme, globalCss } from '../../stitches.config'
 import { appWithTranslation } from 'next-i18next'
 
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+import Loader from '../components/Loader'
+
 const globalStyles = globalCss({
   '*': {
     margin: '0px',
@@ -19,6 +24,24 @@ const globalStyles = globalCss({
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles()
 
+  const router = useRouter()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const handleStart = (url: string) => {
+      url !== router.pathname ? setLoading(true) : setLoading(false)
+    }
+    const handleComplete = (url: any) => setLoading(false)
+
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+  }, [router])
+
+  setTimeout(() => {
+    setLoading(false)
+  }, 500)
+
   return (
     <ThemeProvider
       disableTransitionOnChange
@@ -26,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{ light: 'light-theme', dark: darkTheme.className }}
       defaultTheme="system"
     >
-      <Component {...pageProps} />
+      {!loading ? <Component {...pageProps} /> : <Loader />}
     </ThemeProvider>
   )
 }
