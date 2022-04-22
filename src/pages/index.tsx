@@ -14,61 +14,6 @@ import { FlagBR, FlagUS } from '../components/FlagSvg'
 
 import Particles from '../components/Particles'
 
-const Main = styled('main', {
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: '100vh',
-
-  webkitBoxAlign: 'center',
-  alignItems: 'center',
-
-  backgroundImage: 'url("assets/img/bg.jpg")',
-  backgroundRrepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundSize: 'cover'
-})
-
-const Container = styled('div', {
-  flex: '1 1 0%',
-  display: 'flex',
-  flexFlow: 'row wrap',
-  alignContent: 'space-between',
-  alignItems: 'center',
-  width: '100%',
-  maxWidth: '1280px',
-  zIndex: '1',
-  padding: '1rem 0.7rem',
-
-  '@bp3': {
-    padding: '1rem 0'
-  }
-})
-
-const ItemContent = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  flexFlow: 'row wrap',
-
-  webkitBoxPack: 'center',
-  justifyContent: 'center',
-  webkitBoxAlign: 'center',
-  width: '100%'
-})
-
-const MenuContent = styled('div', {
-  display: 'flex',
-  flexFlow: 'row wrap',
-  width: '100%',
-
-  webkitBoxPack: 'center',
-  justifyContent: 'center',
-  webkitBoxAlign: 'center',
-
-  gap: '10px',
-  rowGap: '10px',
-  columnGap: '20px'
-})
-
 const buttonClass = css({
   width: '120px',
   height: '100px',
@@ -124,6 +69,61 @@ const ButtonLocale = styled('div', {
   mozAnimation: `${fadeIn} 1000ms`,
   webkitAnimation: `${fadeIn} 1000ms`,
   oAnimation: `${fadeIn} 1000ms`
+})
+
+const Main = styled('main', {
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
+
+  webkitBoxAlign: 'center',
+  alignItems: 'center',
+
+  backgroundImage: 'url("assets/img/bg.jpg")',
+  backgroundRrepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover'
+})
+
+const Container = styled('div', {
+  flex: '1 1 0%',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  alignContent: 'space-between',
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: '1280px',
+  zIndex: '1',
+  padding: '1rem 0.7rem',
+
+  '@bp3': {
+    padding: '1rem 0'
+  }
+})
+
+const ItemContent = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  flexFlow: 'row wrap',
+
+  webkitBoxPack: 'center',
+  justifyContent: 'center',
+  webkitBoxAlign: 'center',
+  width: '100%'
+})
+
+const MenuContent = styled('div', {
+  display: 'flex',
+  flexFlow: 'row wrap',
+  width: '100%',
+
+  webkitBoxPack: 'center',
+  justifyContent: 'center',
+  webkitBoxAlign: 'center',
+
+  gap: '10px',
+  rowGap: '10px',
+  columnGap: '20px'
 })
 
 export const getStaticProps: GetStaticProps = async context => ({
