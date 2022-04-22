@@ -68,10 +68,14 @@ const TopContent = styled('div', {
 const Content = styled('div', {
   width: '100%',
   display: 'grid',
-  gridTemplateColumns: '70% auto',
+  gridTemplateColumns: '1fr 1fr',
 
   webkitBoxShadow: '1px 1px 20px 10px rgba(0,0,0,0.20)',
-  boxShadow: '1px 1px 20px 10px rgba(0,0,0,0.20)'
+  boxShadow: '1px 1px 20px 10px rgba(0,0,0,0.20)',
+
+  '@bp2': {
+    gridTemplateColumns: '70% auto'
+  }
 })
 
 const BotContent = styled('div', {
@@ -80,7 +84,7 @@ const BotContent = styled('div', {
   justifyContent: 'center',
   webkitBoxAlign: 'center',
   width: '100%',
-  padding: '0 0 1rem',
+  padding: '1rem 0 1rem',
 
   '& svg': {
     maxHeight: '80px'
@@ -95,7 +99,28 @@ const BotContent = styled('div', {
 
 const PlayWrapper = styled('div', {
   position: 'relative',
-  paddingTop: '56.25%'
+  paddingTop: '56.25%',
+
+  gridColumn: 'span 2',
+  gridRow: 'span 2',
+
+  '@bp3': {
+    gridColumn: 'span 1',
+    gridRow: 'span 1'
+  }
+})
+
+const ChatWrapper = styled('div', {
+  width: '100%',
+  gridColumn: 'span 2',
+  gridRow: 'span 2',
+  height: '400px',
+
+  '@bp3': {
+    gridColumn: 'span 1',
+    gridRow: 'span 1',
+    height: 'auto'
+  }
 })
 
 const playerReact = css({
@@ -145,12 +170,14 @@ export default function Live() {
                 }}
               />
             </PlayWrapper>
-            <iframe
-              src={ChatID(t('vimeoChat'))}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-            ></iframe>
+            <ChatWrapper>
+              <iframe
+                src={ChatID(t('vimeoChat'))}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+              ></iframe>
+            </ChatWrapper>
           </Content>
           <BotContent>
             <ImageBox
