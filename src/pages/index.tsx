@@ -4,15 +4,17 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Link from 'next/link'
 import Script from 'next/script'
+import dynamic from 'next/dynamic'
 
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
-import { styled, css, keyframes } from '../../packages/web/src'
+import { styled, css } from '../../packages/web/src'
 import { Box, Text, ImageBox } from '../../packages/react'
 
 import { LogoSvg } from '../components/LogoSvg'
-import { FlagBR, FlagUS } from '../components/FlagSvg'
 
 import Particles from '../components/Particles'
+
+const LocaleToggle = dynamic(() => import('../components/LocaleToggle'))
 
 const buttonClass = css({
   width: '120px',
@@ -31,44 +33,6 @@ const buttonClass = css({
     background: '#d0741b',
     transform: 'scale(1.05)'
   }
-})
-
-const fadeIn = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 }
-})
-
-const ButtonLocale = styled('div', {
-  display: 'inline-block',
-  position: 'relative',
-  width: '54px',
-  height: '40px',
-  background: '#4f8bc9',
-  boxSizing: 'border-box',
-  webkitClipPath:
-    'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-  clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-
-  '& svg': {
-    position: 'absolute',
-    top: '0px',
-    left: '4px',
-    width: '46px',
-    height: '40px',
-    webkitClipPath:
-      'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-    clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-  },
-
-  '&:hover': {
-    background: '#d0741b',
-    transform: 'scale(1.05)'
-  },
-
-  animation: `${fadeIn} 1000ms`,
-  mozAnimation: `${fadeIn} 1000ms`,
-  webkitAnimation: `${fadeIn} 1000ms`,
-  oAnimation: `${fadeIn} 1000ms`
 })
 
 const Main = styled('main', {
@@ -154,22 +118,7 @@ export default function Home() {
       <Main>
         <Container>
           <ItemContent>
-            <MenuContent>
-              <Link href="/" locale="pt">
-                <a>
-                  <ButtonLocale>
-                    <FlagBR />
-                  </ButtonLocale>
-                </a>
-              </Link>
-              <Link href="/" locale="en">
-                <a>
-                  <ButtonLocale>
-                    <FlagUS />
-                  </ButtonLocale>
-                </a>
-              </Link>
-            </MenuContent>
+            <LocaleToggle />
           </ItemContent>
           <ItemContent css={{ maxWidth: 920, margin: '10px auto' }}>
             <LogoSvg />

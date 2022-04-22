@@ -43,11 +43,7 @@ export default class Document extends NextDocument {
                 font-style: normal;
                 font-display: swap;
                 src: url('/fonts/soehne-mono-web-buch.woff2') format('woff2'), url('/fonts/soehne-mono-web-buch.woff') format('woff');
-              }
-              .c-fHFQzz {
-                opacity: 0;
-              }
-              `
+              }`
             }}
           />
         </Head>
