@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { Component } from 'react'
 import { GetStaticProps } from 'next/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -19,6 +20,7 @@ import Loader from '../components/Loader'
 import { LogoSvg } from '../components/LogoSvg'
 
 import Particles from '../components/Particles'
+import { Console } from 'console'
 
 const LocaleToggle = dynamic(() => import('../components/LocaleToggle'), {
   ssr: false
@@ -123,7 +125,7 @@ export default function Home() {
 
   const timer = setTimeout(() => {
     setLoading(false)
-  }, 800)
+  }, 500)
 
   return (
     <Box>
@@ -198,6 +200,7 @@ export default function Home() {
               <ItemContent
                 css={{
                   maxWidth: 800,
+                  minHeight: 80.86,
                   margin: '0 auto 9vh',
                   '@bp2': {
                     margin: '0 auto 0'
