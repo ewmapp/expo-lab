@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetStaticProps } from 'next/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -6,10 +8,14 @@ import Link from 'next/link'
 import Script from 'next/script'
 import dynamic from 'next/dynamic'
 
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
-import { styled, css } from '../../packages/web/src'
+import { styled, css, keyframes } from '../../packages/web/src'
 import { Box, Text, ImageBox } from '../../packages/react'
 
+import Loader from '../components/Loader'
 import { LogoSvg } from '../components/LogoSvg'
 
 import Particles from '../components/Particles'
@@ -100,6 +106,25 @@ export const getStaticProps: GetStaticProps = async context => ({
 
 export default function Home() {
   const { t } = useTranslation('home')
+
+  const router = useRouter()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const handleStart = (url: string) => {
+      url !== router.pathname ? setLoading(true) : setLoading(false)
+    }
+    const handleComplete = (url: any) => setLoading(false)
+
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+  }, [router])
+
+  const timer = setTimeout(() => {
+    setLoading(false)
+  }, 800)
+
   return (
     <Box>
       <Script
@@ -116,76 +141,82 @@ export default function Home() {
         `}
       </Script>
       <TitleAndMetaTags title={t('title')} />
-      <Particles />
-      <Main>
-        <Container>
-          <ItemContent>
-            <LocaleToggle />
-          </ItemContent>
-          <ItemContent css={{ maxWidth: 920, margin: '10px auto' }}>
-            <LogoSvg />
-            <Text
-              css={{
-                color: '#4f8bc9',
-                textAlign: 'center',
-                marginTop: '1vw',
-                letterSpacing: '0.9vw',
-                fontStyle: 'italic',
-                fontSize: '22px',
-                fontWeight: '700',
-                '@bp1': {
-                  fontSize: '4vw'
-                },
-                '@bp2': {
-                  fontSize: '40px'
-                }
-              }}
-            >
-              {t('subtitle')}
-            </Text>
-            <Text
-              css={{
-                color: '#000',
-                textAlign: 'center',
-                marginTop: '2vw',
-                fontStyle: 'italic',
-                fontSize: '22px',
-                lineHeight: 1,
-                fontWeight: 400,
-                '@bp1': {
-                  fontSize: '4vw'
-                },
-                '@bp2': {
-                  fontSize: '40px'
-                }
-              }}
-            >
-              {t('description')}
-            </Text>
-            <MenuContent css={{ margin: '2rem 0 2rem' }}>
-              <Link href="live">
-                <a className={buttonClass()}>{t('buttonAccess')}</a>
-              </Link>
-            </MenuContent>
-          </ItemContent>
-          <ItemContent
-            css={{
-              maxWidth: 800,
-              margin: '0 auto 9vh',
-              '@bp2': {
-                margin: '0 auto 0'
-              }
-            }}
-          >
-            <ImageBox
-              src="/assets/img/img-footer.png"
-              width="100%"
-              height="auto"
-              alt="org"
-            />
-          </ItemContent>
-        </Container>
-      </Main>
+      {!loading ? (
+        <>
+          <Particles />
+          <Main>
+            <Container>
+              <ItemContent css={{ minHeight: 56 }}>
+                <LocaleToggle />
+              </ItemContent>
+              <ItemContent css={{ maxWidth: 920, margin: '10px auto' }}>
+                <LogoSvg />
+                <Text
+                  css={{
+                    color: '#4f8bc9',
+                    textAlign: 'center',
+                    marginTop: '1vw',
+                    letterSpacing: '0.9vw',
+                    fontStyle: 'italic',
+                    fontSize: '22px',
+                    fontWeight: '700',
+                    '@bp1': {
+                      fontSize: '4vw'
+                    },
+                    '@bp2': {
+                      fontSize: '40px'
+                    }
+                  }}
+                >
+                  {t('subtitle')}
+                </Text>
+                <Text
+                  css={{
+                    color: '#000',
+                    textAlign: 'center',
+                    marginTop: '2vw',
+                    fontStyle: 'italic',
+                    fontSize: '22px',
+                    lineHeight: 1,
+                    fontWeight: 400,
+                    '@bp1': {
+                      fontSize: '4vw'
+                    },
+                    '@bp2': {
+                      fontSize: '40px'
+                    }
+                  }}
+                >
+                  {t('description')}
+                </Text>
+                <MenuContent css={{ margin: '2rem 0 2rem' }}>
+                  <Link href="live">
+                    <a className={buttonClass()}>{t('buttonAccess')}</a>
+                  </Link>
+                </MenuContent>
+              </ItemContent>
+              <ItemContent
+                css={{
+                  maxWidth: 800,
+                  margin: '0 auto 9vh',
+                  '@bp2': {
+                    margin: '0 auto 0'
+                  }
+                }}
+              >
+                <ImageBox
+                  src="/assets/img/img-footer.png"
+                  width="100%"
+                  height="auto"
+                  alt="org"
+                />
+              </ItemContent>
+            </Container>
+          </Main>
+        </>
+      ) : (
+        <Loader />
+      )}
     </Box>
   )
 }
