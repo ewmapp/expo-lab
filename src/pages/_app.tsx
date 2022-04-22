@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { darkTheme, globalCss } from '../../stitches.config'
 import { appWithTranslation } from 'next-i18next'
+
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Loader from '../components/Loader'
 
 const globalStyles = globalCss({
   '*': {
@@ -19,6 +25,20 @@ const globalStyles = globalCss({
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles()
 
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const handleStart = (url: string) => {
+      url !== router.pathname ? setLoading(true) : setLoading(false)
+    }
+    const handleComplete = (url: any) => setLoading(false)
+
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+  }, [router])
+
   return (
     <ThemeProvider
       disableTransitionOnChange
@@ -26,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{ light: 'light-theme', dark: darkTheme.className }}
       defaultTheme="system"
     >
-      <Component {...pageProps} />
+      {!loading ? <Component {...pageProps} /> : <Loader />}
     </ThemeProvider>
   )
 }
