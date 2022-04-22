@@ -1,240 +1,215 @@
-import { styled } from '../../stitches.config'
-import { LogoSvg } from '../components/LogoSvg'
-import ParticleField from 'react-particles-webgl'
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { GetStaticProps } from 'next/types'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Link from 'next/link'
+
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
-import { Box, Text } from '../../packages/react'
-import { ImageBox } from '../components/ImageBox'
-import Script from 'next/script'
+import { styled, css } from '../../packages/web/src'
+import { Box, Text, ImageBox } from '../../packages/react'
 
-const Texto = styled('p', {
-  fontFamily: '$system',
-  color: '$hiContrast',
+import { LogoSvg } from '../components/LogoSvg'
+import { FlagBR, FlagUS } from '../components/FlagSvg'
 
-  variants: {
-    size: {
-      1: {
-        fontSize: '$1'
-      },
-      2: {
-        fontSize: '$2'
-      },
-      3: {
-        fontSize: '$3'
-      },
-      4: {
-        fontSize: '$4'
-      },
-      5: {
-        fontSize: '$5'
-      },
-      6: {
-        fontSize: '$6'
-      },
-      7: {
-        fontSize: '$7'
-      },
-      8: {
-        fontSize: '$8'
-      },
-      9: {
-        fontSize: '$9'
-      }
-    }
-  }
-})
+import Particles from '../components/Particles'
 
 const Main = styled('main', {
   display: 'flex',
   flexDirection: 'column',
+  minHeight: '100vh',
+
   webkitBoxAlign: 'center',
   alignItems: 'center',
-  minHeight: '100vh',
-  /* background: 'radial-gradient(#fff, #cdced3)' */
-  /* backgroundImage:
-    'radial-gradient(rgba(255,255,255, 1), rgba(0,0,0, 0.2)), url("assets/img/background.jpg")', */
+
   backgroundImage: 'url("assets/img/bg.jpg")',
   backgroundRrepeat: 'no-repeat',
   backgroundPosition: 'center',
   backgroundSize: 'cover'
 })
 
-const Content = styled('div', {
+const Container = styled('div', {
   flex: '1 1 0%',
   display: 'flex',
-  flexDirection: 'column',
-  webkitBoxAlign: 'center',
+  flexFlow: 'row wrap',
+  alignContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  maxWidth: '1000px',
-  padding: '32px'
+  maxWidth: '1280px',
+  zIndex: '1',
+  padding: '1rem 0.7rem',
+
+  '@bp3': {
+    padding: '1rem 0'
+  }
 })
 
-const DivCenter = styled('div', {
-  flex: '1 1 0%',
+const ItemContent = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
+  flexFlow: 'row wrap',
+
   webkitBoxPack: 'center',
   justifyContent: 'center',
   webkitBoxAlign: 'center',
-  alignItems: 'center',
-  width: '100%',
-  padding: '10px 0px 10px'
+  width: '100%'
 })
 
-const DivLogo = styled('div', {
+const MenuContent = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
-  alignSelf: 'center',
+  flexFlow: 'row wrap',
   width: '100%',
-  maxWidth: '920px',
-  zIndex: '10'
+
+  webkitBoxPack: 'center',
+  justifyContent: 'center',
+  webkitBoxAlign: 'center',
+
+  gap: '10px',
+  rowGap: '10px',
+  columnGap: '20px'
 })
 
-const DivFooter = styled('div', {
-  width: '100%',
-  maxWidth: '568px',
+const buttonClass = css({
+  width: '120px',
+  height: '100px',
+  fontSize: '1.3rem',
   textAlign: 'center',
-  margin: '0px auto 20px auto'
+  background: '#4f8bc9',
+  color: '#fff',
+  padding: '37px 10px',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+  transition: 'transform .1s',
+
+  '&:hover': {
+    background: '#d0741b',
+    transform: 'scale(1.05)'
+  }
 })
 
-const config = {
-  showCube: false,
-  dimension: '3D',
-  velocity: 0.2,
-  boundaryType: 'bounce',
-  antialias: false,
-  direction: {
-    xMin: -1,
-    xMax: 1,
-    yMin: -1,
-    yMax: 1,
-    zMin: -1,
-    zMax: 1
+const ButtonLocale = styled('div', {
+  display: 'inline-block',
+  position: 'relative',
+  width: '54px',
+  height: '40px',
+  background: '#4f8bc9',
+  boxSizing: 'border-box',
+  webkitClipPath:
+    'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+  clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+
+  '& svg': {
+    position: 'absolute',
+    top: '0px',
+    left: '4px',
+    width: '46px',
+    height: '40px',
+    webkitClipPath:
+      'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+    clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
   },
-  lines: {
-    colorMode: 'solid',
-    color: '#315189',
-    transparency: 0.8,
-    limitConnections: true,
-    maxConnections: 3,
-    minDistance: 400,
-    visible: true
-  },
-  particles: {
-    colorMode: 'solid',
-    color: '#286898',
-    transparency: 0.6,
-    shape: 'circle',
-    boundingBox: 'canvas',
-    count: 50,
-    minSize: 90,
-    maxSize: 150,
-    visible: true
-  },
-  cameraControls: {
-    enabled: true,
-    enableDamping: true,
-    dampingFactor: 0.25,
-    enableZoom: false,
-    autoRotate: true,
-    autoRotateSpeed: 0.5,
-    resetCameraFlag: false
-  },
-  maxConnections: 3,
-  limitConnections: true
-}
+
+  '&:hover': {
+    background: '#d0741b',
+    transform: 'scale(1.05)'
+  }
+})
+
+export const getStaticProps: GetStaticProps = async context => ({
+  props: {
+    ...(await serverSideTranslations(context.locale!, ['home']))
+  }
+})
 
 export default function Home() {
+  const { t } = useTranslation('home')
   return (
     <Box>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-2J3EJ7KGZ9"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-2J3EJ7KGZ9');
-        `}
-      </Script>
-      <TitleAndMetaTags title="EXPOLAB | 1&#170; Mostra Nacional de Experiências da Rede de Laboratórios de Saúde Pública" />
+      <TitleAndMetaTags title={t('title')} />
+      <Particles />
       <Main>
-        <div
-          style={{
-            height: '100vh',
-            width: '100%',
-            position: 'absolute',
-            zIndex: '0'
-          }}
-        >
-          <ParticleField config={config} />
-        </div>
-        <Content>
-          <DivCenter>
-            <DivLogo>
-              <LogoSvg />
-              <Texto
-                as="h2"
-                css={{
-                  fontFamily: '$default',
-                  color: '#4f8bc9',
-                  textAlign: 'center',
-                  marginTop: '1vw',
-                  letterSpacing: '0.9vw',
-                  fontStyle: 'italic',
-                  fontSize: '22px',
-                  '@bp1': {
-                    fontSize: '4vw'
-                  },
-                  '@bp2': {
-                    fontSize: '6vw'
-                  },
-                  '@bp3': {
-                    fontSize: '40px'
-                  }
-                }}
-              >
-                04 de maio de 2022
-              </Texto>
-              <Texto
-                as="h2"
-                css={{
-                  fontFamily: '$default',
-                  color: '#000',
-                  textAlign: 'center',
-                  marginTop: '2vw',
-                  fontStyle: 'italic',
-                  fontSize: '22px',
-                  lineHeight: 1,
-                  fontWeight: 400,
-
-                  '@bp1': {
-                    fontSize: '4vw'
-                  },
-                  '@bp2': {
-                    fontSize: '6vw'
-                  },
-                  '@bp3': {
-                    fontSize: '40px'
-                  }
-                }}
-              >
-                1&#170; Mostra Nacional de Experiências da Rede de Laboratórios
-                de Saúde Pública
-              </Texto>
-            </DivLogo>
-          </DivCenter>
-          <DivFooter>
+        <Container>
+          <ItemContent>
+            <MenuContent>
+              <Link href="/" locale="pt">
+                <a>
+                  <ButtonLocale>
+                    <FlagBR />
+                  </ButtonLocale>
+                </a>
+              </Link>
+              <Link href="/" locale="en">
+                <a>
+                  <ButtonLocale>
+                    <FlagUS />
+                  </ButtonLocale>
+                </a>
+              </Link>
+            </MenuContent>
+          </ItemContent>
+          <ItemContent css={{ maxWidth: 920, margin: '10px auto' }}>
+            <LogoSvg />
+            <Text
+              css={{
+                color: '#4f8bc9',
+                textAlign: 'center',
+                marginTop: '1vw',
+                letterSpacing: '0.9vw',
+                fontStyle: 'italic',
+                fontSize: '22px',
+                fontWeight: '700',
+                '@bp1': {
+                  fontSize: '4vw'
+                },
+                '@bp2': {
+                  fontSize: '40px'
+                }
+              }}
+            >
+              {t('subtitle')}
+            </Text>
+            <Text
+              css={{
+                color: '#000',
+                textAlign: 'center',
+                marginTop: '2vw',
+                fontStyle: 'italic',
+                fontSize: '22px',
+                lineHeight: 1,
+                fontWeight: 400,
+                '@bp1': {
+                  fontSize: '4vw'
+                },
+                '@bp2': {
+                  fontSize: '40px'
+                }
+              }}
+            >
+              {t('description')}
+            </Text>
+            <MenuContent css={{ margin: '2rem 0 2rem' }}>
+              <Link href="live">
+                <a className={buttonClass()}>{t('buttonAccess')}</a>
+              </Link>
+            </MenuContent>
+          </ItemContent>
+          <ItemContent
+            css={{
+              maxWidth: 800,
+              margin: '0 auto 9vh',
+              '@bp2': {
+                margin: '0 auto 0'
+              }
+            }}
+          >
             <ImageBox
               src="/assets/img/img-footer.png"
               width="100%"
               height="auto"
               alt="org"
             />
-          </DivFooter>
-        </Content>
+          </ItemContent>
+        </Container>
       </Main>
     </Box>
   )
