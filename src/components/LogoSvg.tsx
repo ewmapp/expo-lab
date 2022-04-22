@@ -1,4 +1,4 @@
-export const LogoSvg = () => (
+const logo = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 217.07">
     <path
       fill="#2e5287"
@@ -62,3 +62,7 @@ export const LogoSvg = () => (
     />
   </svg>
 )
+
+export default function LogoSvg() {
+  return logo()
+}
