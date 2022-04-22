@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
-import { styled, css } from '../../packages/web/src'
+import { styled, css, keyframes } from '../../packages/web/src'
 import { Box, Text, ImageBox } from '../../packages/react'
 
 import { LogoSvg } from '../components/LogoSvg'
@@ -88,6 +88,11 @@ const buttonClass = css({
   }
 })
 
+const fadeIn = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 }
+})
+
 const ButtonLocale = styled('div', {
   display: 'inline-block',
   position: 'relative',
@@ -113,7 +118,12 @@ const ButtonLocale = styled('div', {
   '&:hover': {
     background: '#d0741b',
     transform: 'scale(1.05)'
-  }
+  },
+
+  animation: `${fadeIn} 1000ms`,
+  mozAnimation: `${fadeIn} 1000ms`,
+  webkitAnimation: `${fadeIn} 1000ms`,
+  oAnimation: `${fadeIn} 1000ms`
 })
 
 export const getStaticProps: GetStaticProps = async context => ({
