@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import { darkTheme, globalCss } from '../../stitches.config'
+import { appWithTranslation } from 'next-i18next'
 
 const globalStyles = globalCss({
   '*': {
@@ -10,6 +11,7 @@ const globalStyles = globalCss({
     boxSizing: 'border-box'
   },
   body: {
+    fontFamily: '$default',
     backgroundColor: '$loContrast'
   }
 })
@@ -29,4 +31,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)

@@ -1,0 +1,7 @@
+{
+  "global": {
+    "change-locale": "Alterar localidade",
+    "error-with-status": "Ocorreu um erro {{statusCode}} no servidor",
+    "error-without-status": "Ocorreu um erro no servidor"
+  }
+}

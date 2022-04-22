@@ -6,8 +6,13 @@ module.exports = {
 }
 module.exports = withImages({
   images: {
-    domains: ['picsum.photos']
+    domains: ['']
   },
   esModule: true,
   inlineImageLimit: false // A codificação de URL base4/data (SVG) não é suportada ao usar o componente para otimização.
 })
+
+const { i18n } = require('./next-i18next.config')
+module.exports = {
+  i18n
+}
