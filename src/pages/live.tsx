@@ -2,13 +2,17 @@
 import { GetStaticProps } from 'next/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dynamic from 'next/dynamic'
 
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
 import { styled, css } from '../../stitches.config'
 import { Box, ImageBox } from '../../packages/react'
 
-import { LogoSvg } from '../components/LogoSvg'
 import ReactPlayer from 'react-player/lazy'
+
+const LogoSvg = dynamic(() => import('../components/LogoSvg'), {
+  ssr: false
+})
 
 const Main = styled('main', {
   display: 'flex',
