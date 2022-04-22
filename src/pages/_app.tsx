@@ -12,7 +12,7 @@ const globalStyles = globalCss({
   },
   body: {
     fontFamily: '$default',
-    backgroundColor: '$loContrast'
+    backgroundColor: '#f1f1f1'
   }
 })
 

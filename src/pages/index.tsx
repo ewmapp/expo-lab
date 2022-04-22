@@ -143,7 +143,7 @@ export default function Home() {
       </Script>
       <TitleAndMetaTags title={t('title')} />
       {!loading ? (
-        <>
+        <Box>
           <Particles />
           <Main>
             <Container>
@@ -199,7 +199,6 @@ export default function Home() {
               <ItemContent
                 css={{
                   maxWidth: 800,
-                  minHeight: 80.86,
                   margin: '0 auto 9vh',
                   '@bp2': {
                     margin: '0 auto 0'
@@ -215,7 +214,7 @@ export default function Home() {
               </ItemContent>
             </Container>
           </Main>
-        </>
+        </Box>
       ) : (
         <Loader />
       )}
