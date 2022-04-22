@@ -2,17 +2,12 @@
 import { GetStaticProps } from 'next/types'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import dynamic from 'next/dynamic'
 
 import { TitleAndMetaTags } from '../components/TitleAndMetaTags'
 import { styled, css } from '../../stitches.config'
 import { Box, ImageBox } from '../../packages/react'
 
 import ReactPlayer from 'react-player/lazy'
-
-const LogoSvg = dynamic(() => import('../components/LogoSvg'), {
-  ssr: false
-})
 
 const Main = styled('main', {
   display: 'flex',
@@ -54,16 +49,20 @@ const TopContent = styled('div', {
   padding: '1rem 0 1rem',
 
   '& svg': {
-    maxHeight: '80px'
+    width: 'auto',
+    maxHeight: '70px'
   },
   '& img': {
-    maxHeight: '80px'
+    width: 'auto',
+    maxHeight: '70px'
   },
   '@bp4': {
     '& svg': {
+      width: 'auto',
       maxHeight: '120px'
     },
     '& img': {
+      width: 'auto',
       maxHeight: '120px'
     }
   }
@@ -151,7 +150,7 @@ export default function Live() {
       <Main>
         <Container>
           <TopContent>
-            <LogoSvg />
+            <ImageBox src="/assets/img/logo.png" alt="ExpoLab" />
           </TopContent>
           <Content>
             <PlayWrapper>
