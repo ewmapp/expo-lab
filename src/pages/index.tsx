@@ -18,10 +18,6 @@ const LocaleToggle = dynamic(() => import('../components/LocaleToggle'), {
   ssr: false
 })
 
-const LogoSvg = dynamic(() => import('../components/LogoSvg'), {
-  ssr: false
-})
-
 const buttonClass = css({
   width: '120px',
   height: '100px',
@@ -128,7 +124,12 @@ export default function Home() {
             <LocaleToggle />
           </ItemContent>
           <ItemContent css={{ maxWidth: 920, margin: '10px auto' }}>
-            <LogoSvg />
+            <ImageBox
+              src="/assets/img/logo.png"
+              width="100%"
+              height="auto"
+              alt="ExpoLab"
+            />
             <Text
               css={{
                 color: '#4f8bc9',
